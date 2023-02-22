@@ -7,11 +7,15 @@
         {
             "type": "node",
             "request": "launch",
+            "console": "integratedTerminal",
             "name": "Launch Program",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${file}"
+            "preLaunchTask": "start docker postgres",
+            "postDebugTask": "destroy docker postgres",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run",
+                "dev"
+            ]
         }
     ]
 }
