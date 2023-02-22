@@ -13,7 +13,7 @@
         {
             "label": "start docker postgres container",
             "type": "shell",
-            "command": "docker run --name some-postgres -v D:/home/express-test-server-v.2/db/:/app -p 6666:5555 -e POSTGRES_PASSWORD=yourpassword -e POSTGRES_DB=dockerdatabase -d postgres"
+            "command": "docker run --name some-postgres -v D:/home/express-test-server-v.2/db/:/app -p 6666:5432 -e POSTGRES_USER=testPsqlUser -e POSTGRES_PASSWORD=yourpassword -e POSTGRES_DB=dockerdatabase -d postgres"
         },
         {
             "label": "sleep for 10 seconds",
@@ -23,7 +23,7 @@
         {
             "label": "build postgres tables",
             "type": "shell",
-            "command": "docker exec some-postgres sh -c 'psql -U postgres -d dockerdatabase < /app/initial.sql'"
+            "command": "docker exec some-postgres sh -c 'psql -U testPsqlUser -d dockerdatabase < /app/initial.sql'"
         },
         {
             "label": "destroy docker postgres",
