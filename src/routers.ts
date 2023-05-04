@@ -1,12 +1,12 @@
-import express from "express";
+import express from 'express';
+
+import { auth_guard } from './middlewares/session.middleware';
 
 const routers = express.Router();
-const usersRouters = require("./modules/users/routers.user");
-const carsRouters = require("./modules/cars/routers.car");
-const airRouters = require("./modules/airplains/routers.airplain");
+const usersRouters = require('./modules/users/routers.user');
+const blogsRouters = require('./modules/blogs/routers.blog');
 
-routers.use("/users", usersRouters);
-routers.use("/cars", carsRouters);
-routers.use("/airplain", airRouters);
+routers.use('/', auth_guard, usersRouters);
+routers.use('/blogs', auth_guard, blogsRouters);
 
 module.exports = routers;

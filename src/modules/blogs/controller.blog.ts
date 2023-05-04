@@ -1,0 +1,1 @@
+export const post_blog = async(req:any,res:any)=>{const data = req.body}

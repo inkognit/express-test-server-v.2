@@ -19,7 +19,9 @@
             "env": {
                 "DATABASE_URL": "postgres://dockerdatabase:yourpassword@localhost:6666/test",
                 "DATABASE_URL_WITH_SCHEMA": "postgres://testPsqlUser:yourpassword@localhost:6666/dockerdatabase?schema=test",
-                "PORT": "6565"
+                "PORT": "6565",
+                "SALT_JWT": "SALT_JWT",
+                "SALT_PASSWORD": "SALT_PASSWORD"
             }
         }
     ]

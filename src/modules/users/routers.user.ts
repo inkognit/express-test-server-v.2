@@ -1,14 +1,10 @@
-import express from "express";
+import express from 'express';
+
+import { sign_in_controller, sign_up_controller } from './controller.user';
 
 const routers = express.Router();
 
-routers.post("/", (req, res) => {
-  req.body;
-  return res.send(JSON.stringify({ res: req.body }));
-});
-routers.get("/", (req, res) => {
-  const someStr = " some string or data ";
-  res.send(someStr);
-});
+routers.post('/sign_up', sign_up_controller);
+routers.post('/sign_in', sign_in_controller);
 
 module.exports = routers;
