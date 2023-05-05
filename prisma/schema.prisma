@@ -9,12 +9,13 @@ generator client {
 }
 
 model user {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  nickname  String   @unique
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  nickname  String     @unique
   password  String
-  create_at DateTime @default(now())
+  create_at DateTime   @default(now())
   blogs     blog[]
+  session   sessions[]
 }
 
 model blog {
@@ -23,4 +24,15 @@ model blog {
   user_id   Int
   create_at DateTime @default(now())
   user      user     @relation(fields: [user_id], references: [id])
+}
+
+model sessions {
+  id            Int     @id @default(autoincrement())
+  userId        Int
+  refresh_token String?
+  access_token  String?
+  isUsing       Boolean @default(false)
+  ip            String?
+  adress        String?
+  user          user    @relation(fields: [userId], references: [id])
 }
